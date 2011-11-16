@@ -25,6 +25,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import org.apache.camel.model.RouteDefinition;
+import org.switchyard.common.type.Classes;
 import org.switchyard.component.camel.SwitchYardRouteDefinition;
 import org.switchyard.component.camel.config.model.CamelComponentImplementationModel;
 import org.switchyard.config.Configuration;
@@ -85,7 +86,8 @@ public class V1CamelImplementationModel extends V1ComponentImplementationModel i
     
     private static JAXBContext createJAXBInstance() {
         try {
-            return JAXBContext.newInstance("org.apache.camel.model");
+            //return JAXBContext.newInstance("org.apache.camel.model");
+        	return JAXBContext.newInstance("org.apache.camel.model", Classes.getClassLoader());
         } catch (JAXBException e) {
             throw new SwitchYardException(e);
         }
